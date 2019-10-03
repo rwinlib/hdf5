@@ -5,12 +5,10 @@
  *                                                                           *
  * This file is part of HDF5.  The full HDF5 copyright notice, including     *
  * terms governing use, modification, and redistribution, is contained in    *
- * the files COPYING and Copyright.html.  COPYING can be found at the root   *
- * of the source code distribution tree; Copyright.html can be found at the  *
- * root level of an installed copy of the electronic HDF5 document set and   *
- * is linked from the top-level documents page.  It can also be found at     *
- * http://hdfgroup.org/HDF5/doc/Copyright.html.  If you do not have          *
- * access to either file, you may request a copy from help@hdfgroup.org.     *
+ * the COPYING file, which can be found at the root of the source code       *
+ * distribution tree, or in https://support.hdfgroup.org/ftp/HDF5/releases.  *
+ * If you do not have access to either file, you may request a copy from     *
+ * help@hdfgroup.org.                                                        *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
@@ -26,25 +24,26 @@
 #define c_int_4 long
 #define c_int_8 long long
 #define c_size_t_8 size_t
+#define c_time_t_8 time_t
 #define c_hsize_t_8 hsize_t
+typedef struct {c_int_8 a; c_int_8 b;} c_int_16;
 #define c_float_4 float
 #define c_float_8 double
-#define c_float_16 long double
+#define c_float_10 long double
+#define c_float_16 __float128
 
 typedef c_int_8 haddr_t_f;
 typedef c_hsize_t_8 hsize_t_f;
 typedef c_int_8 hssize_t_f;
 typedef c_int_4 off_t_f;
 typedef c_size_t_8 size_t_f;
+typedef c_time_t_8 time_t_f;
 typedef c_int_4 int_f;
-typedef c_int_1 int_1_f;
-typedef c_int_2 int_2_f;
-typedef c_int_4 int_4_f;
-typedef c_int_8 int_8_f;
-typedef c_float_4 real_4_f;
-typedef c_float_8 real_8_f;
-typedef c_float_16 real_16_f;
-typedef c_int_4 hid_t_f;
+typedef c_float_4 real_C_FLOAT_f;
+typedef c_float_8 real_C_DOUBLE_f;
+typedef c_float_10 real_C_LONG_DOUBLE_f;
+typedef c_float_16 real_C_FLOAT128_f;
+typedef c_int_8 hid_t_f;
 typedef c_float_4 real_f;
 typedef c_float_8 double_f;
 
