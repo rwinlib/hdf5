@@ -57,6 +57,9 @@
 #   include <stddef.h>
 #endif
 #ifdef H5_HAVE_PARALLEL
+/* Don't link against MPI C++ bindings */
+#   define MPICH_SKIP_MPICXX 1
+#   define OMPI_SKIP_MPICXX 1
 #   include <mpi.h>
 #ifndef MPI_FILE_NULL		/*MPIO may be defined in mpi.h already       */
 #   include <mpio.h>
@@ -92,11 +95,11 @@ extern "C" {
 
 /* Version numbers */
 #define H5_VERS_MAJOR	1	/* For major interface/format changes  	     */
-#define H5_VERS_MINOR	10	/* For minor interface/format changes  	     */
-#define H5_VERS_RELEASE	5	/* For tweaks, bug-fixes, or development     */
+#define H5_VERS_MINOR	12	/* For minor interface/format changes  	     */
+#define H5_VERS_RELEASE	0	/* For tweaks, bug-fixes, or development     */
 #define H5_VERS_SUBRELEASE ""	/* For pre-releases like snap0       */
 				/* Empty string for real releases.           */
-#define H5_VERS_INFO    "HDF5 library version: 1.10.5"      /* Full version string */
+#define H5_VERS_INFO    "HDF5 library version: 1.12.0"      /* Full version string */
 
 #define H5check()	H5check_version(H5_VERS_MAJOR,H5_VERS_MINOR,	      \
 				        H5_VERS_RELEASE)
@@ -324,6 +327,18 @@ typedef struct H5_ih_info_t {
     hsize_t     index_size;     /* btree and/or list */
     hsize_t     heap_size;
 } H5_ih_info_t;
+
+/* Tokens are unique and permanent identifiers that are
+ * used to reference HDF5 objects in a container. */
+
+/* The maximum size allowed for tokens */
+#define H5O_MAX_TOKEN_SIZE      (16)    /* Allows for 128-bit tokens */
+
+/* Type for object tokens */
+/* (Hoisted here, since it's used by both the H5Lpublic.h and H5Opublic.h headers) */
+typedef struct H5O_token_t {
+    uint8_t __data[H5O_MAX_TOKEN_SIZE];
+} H5O_token_t;
 
 /* Functions in H5.c */
 H5_DLL herr_t H5open(void);

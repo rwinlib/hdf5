@@ -35,7 +35,7 @@ typedef struct {c_int_8 a; c_int_8 b;} c_int_16;
 typedef c_int_8 haddr_t_f;
 typedef c_hsize_t_8 hsize_t_f;
 typedef c_int_8 hssize_t_f;
-typedef c_int_4 off_t_f;
+typedef c_int_8 off_t_f;
 typedef c_size_t_8 size_t_f;
 typedef c_time_t_8 time_t_f;
 typedef c_int_4 int_f;
